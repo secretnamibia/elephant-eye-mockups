@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elephant Eye Travel Info &amp; Adventure Tours — Travel Consultancy · Adventure Tours · Sustainable Tourism Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0E2B1E;
+    --green-mid:#1C4A34;
+    --olive:#8A8B5C;
+    --grey:#9AA0A0;
+    --cream:#F7F4ED;
+    --sand:#D9A05B;
+    --white:#FFFFFF;
+    --hairline:#E3E0D8;
+    --ink:#101512;
+    --ink-soft:#4A524D;
+    --max:1320px;
+    --pad:24px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad);}
+  .display{font-family:'Archivo',sans-serif;}
+  .micro{
+    font-family:'Archivo',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--olive);
+  }
+  .micro .num{color:var(--sand);margin-right:12px;font-variant-numeric:tabular-nums;}
+  .section-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+    padding:32px 0 40px;
+    border-bottom:1px solid var(--hairline);
+    margin-bottom:0;
+  }
+  .section-head h2{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:clamp(28px,3.4vw,44px);
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    color:var(--green);
+  }
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);}
+  .reveal.in{opacity:1;transform:none;}
+  /* ---------- Utility bar ---------- */
+  .utility{
+    background:var(--green);
+    color:rgba(255,255,255,.85);
+    font-size:12px;
+    letter-spacing:.04em;
+  }
+  .utility .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;}
+  .utility a{color:rgba(255,255,255,.85);transition:color .2s;}
+  .utility a:hover{color:var(--sand);}
+  .utility .sep{margin:0 16px;color:rgba(255,255,255,.3);}
+  .utility .right span.dot{color:var(--sand);margin:0 8px;}
+  @media (max-width:640px){ .utility .right{display:none;} }
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:80px;}
+  .logo{height:44px;width:auto;}
+  nav.main{display:flex;gap:32px;}
+  nav.main a{
+    font-family:'Archivo',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:8px 0;
+    border-bottom:2px solid transparent;
+    transition:color .2s,border-color .2s;
+  }
+  nav.main a:hover{color:var(--green);border-bottom-color:var(--sand);}
+  .btn-enquire{
+    font-family:'Archivo',sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--green);color:var(--white);
+    padding:12px 28px;border:1px solid var(--green);border-radius:2px;
+    transition:background .25s,color .25s;
+  }
+  .btn-enquire:hover{background:transparent;color:var(--green);}
+  .burger{display:none;background:none;border:1px solid var(--hairline);border-radius:2px;width:44px;height:44px;cursor:pointer;position:relative;}
+  .burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--green);transition:.3s;}
+  .burger span:nth-child(1){top:15px;} .burger span:nth-child(2){top:21px;} .burger span:nth-child(3){top:27px;}
+  @media (max-width:900px){
+    nav.main{display:none;}
+    .btn-enquire{display:none;}
+    .burger{display:block;}
+    nav.main.open{
+      display:flex;position:absolute;top:81px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--white);
+      border-bottom:1px solid var(--hairline);
+    }
+    nav.main.open a{padding:16px 24px;border-bottom:1px solid var(--hairline);}
+  }
+  /* ---------- Hero ---------- */
+  .hero{border-bottom:1px solid var(--hairline);}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:64px;
+    padding:96px 0 80px;
+    align-items:stretch;
+  }
+  .hero-kicker{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+  .hero-kicker .rule{width:48px;height:1px;background:var(--sand);}
+  .hero-title{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    font-size:clamp(40px,5.6vw,80px);
+    line-height:.98;
+    letter-spacing:-0.03em;
+    color:var(--green);
+    text-transform:uppercase;
+  }
+  .hero-title .line{display:block;overflow:hidden;}
+  .hero-title .line span{display:block;transform:translateY(110%);transition:transform 1s cubic-bezier(.22,.61,.36,1);}
+  .hero-title.in .line span{transform:none;}
+  .hero-title .line:nth-child(2) span{transition-delay:.12s;}
+  .hero-title .line:nth-child(3) span{transition-delay:.24s;}
+  .hero-title .accent{color:var(--olive);}
+  .hero-title .sand{color:var(--sand);}
+  .hero-copy{
+    margin-top:32px;max-width:520px;
+    color:var(--ink-soft);font-size:17px;
+  }
+  .hero-ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Archivo',sans-serif;
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:18px 36px;border-radius:2px;
+    display:inline-flex;align-items:center;gap:12px;
+    transition:all .25s;
+  }
+  .btn-primary{background:var(--green);color:var(--white);border:1px solid var(--green);}
+  .btn-primary:hover{background:var(--green-mid);border-color:var(--green-mid);}
+  .btn-primary:hover .arrow{transform:translateX(4px);}
+  .btn-ghost{border:1px solid var(--green);color:var(--green);}
+  .btn-ghost:hover{background:var(--green);color:var(--white);}
+  .arrow{transition:transform .25s;}
+  .hero-media{position:relative;min-height:520px;}
+  .hero-media img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;border-radius:2px;
+  }
+  .caption-chip{
+    position:absolute;left:16px;bottom:16px;
+    background:rgba(255,255,255,.94);
+    padding:10px 16px;border-radius:2px;
+    border-left:3px solid var(--sand);
+    font-family:'Archivo',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--green);
+  }
+  .caption-chip small{display:block;letter-spacing:.08em;color:var(--grey);text-transform:none;font-family:'Inter',sans-serif;font-weight:400;margin-top:2px;}
+  /* ---------- Stats strip ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hairline);}
+  .stat{
+    padding:40px 32px;
+    border-right:1px solid var(--hairline);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .value{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:clamp(34px,3.6vw,52px);letter-spacing:-0.02em;
+    color:var(--green);line-height:1;
+  }
+  .stat .value em{font-style:normal;color:var(--sand);}
+  .stat .label{margin-top:10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);}
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:48px;padding:64px 0;}
+    .hero-media{min-height:380px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:none;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--hairline);}
+  }
+  /* ---------- Sections ---------- */
+  section{padding:96px 0;}
+  @media (max-width:900px){section{padding:64px 0;}}
+  /* ---------- Services table ---------- */
+  .service-row{
+    display:grid;
+    grid-template-columns:80px 1fr 1.4fr 64px;
+    gap:32px;align-items:center;
+    padding:36px 24px;
+    border-bottom:1px solid var(--hairline);
+    transition:background .3s;
+    position:relative;
+  }
+  .service-row:hover{background:var(--cream);}
+  .service-row .idx{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    letter-spacing:.1em;color:var(--olive);font-variant-numeric:tabular-nums;
+  }
+  .service-row h3{
+    font-family:'Archivo',sans-serif;font-weight:700;
+    font-size:clamp(18px,1.8vw,24px);letter-spacing:-0.01em;
+    color:var(--green);line-height:1.2;
+  }
+  .service-row p{color:var(--ink-soft);font-size:15px;max-width:560px;}
+  .service-row .go{
+    width:48px;height:48px;border:1px solid var(--hairline);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:var(--green);
+    transition:all .25s;justify-self:end;
+  }
+  .service-row:hover .go{background:var(--green);color:var(--white);border-color:var(--green);}
+  @media (max-width:900px){
+    .service-row{grid-template-columns:48px 1fr 48px;padding:28px 16px;gap:16px;}
+    .service-row p{grid-column:2/3;grid-row:2;}
+  }
+  /* ---------- Why split ---------- */
+  .why{background:var(--cream);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+  .why-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:96px;}
+  .why-left{position:relative;}
+  .why-sticky{position:sticky;top:140px;}
+  .why-sticky h2{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:clamp(30px,3.2vw,44px);letter-spacing:-0.02em;line-height:1.08;
+    color:var(--green);margin-top:24px;
+  }
+  .why-sticky p{margin-top:24px;color:var(--ink-soft);max-width:400px;}
+  .why-item{
+    display:grid;grid-template-columns:56px 1fr;gap:24px;
+    padding:32px 0;border-bottom:1px solid var(--hairline);
+  }
+  .why-item:first-child{padding-top:0;}
+  .why-item .n{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
+    color:var(--sand);letter-spacing:.1em;font-variant-numeric:tabular-nums;
+    padding-top:4px;
+  }
+  .why-item h4{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;
+    color:var(--green);letter-spacing:-0.01em;
+  }
+  .why-item p{margin-top:8px;color:var(--ink-soft);font-size:15px;}
+  @media (max-width:900px){.why-grid{grid-template-columns:1fr;gap:48px;}.why-sticky{position:static;}}
+  /* ---------- How it works ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--hairline);}
+  .step{
+    padding:40px 32px 48px;
+    border-right:1px solid var(--hairline);
+    transition:background .3s;
+  }
+  .step:hover{background:var(--cream);}
+  .step .sq{
+    width:56px;height:56px;
+    border:1px solid var(--green);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;
+    color:var(--green);margin-bottom:32px;
+    transition:all .3s;
+  }
+  .step:hover .sq{background:var(--green);color:var(--white);}
+  .step h4{font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--green);}
+  .step p{margin-top:12px;color:var(--ink-soft);font-size:14px;}
+  @media (max-width:900px){
+    .steps{grid-template-columns:1fr 1fr;border-top:1px solid var(--hairline);}
+    .step{border-bottom:1px solid var(--hairline);}
+  }
+  @media (max-width:560px){.steps{grid-template-columns:1fr;}}
+  /* ---------- Destinations ---------- */
+  .dest-row{
+    display:grid;grid-template-columns:1fr 1fr;
+    border-bottom:1px solid var(--hairline);
+    min-height:480px;
+  }
+  .dest-row:last-child{border-bottom:none;}
+  .dest-row .media{position:relative;overflow:hidden;}
+  .dest-row .media img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .8s cubic-bezier(.22,.61,.36,1);
+  }
+  .dest-row:hover .media img{transform:scale(1.04);}
+  .dest-row .media .tag{
+    position:absolute;top:20px;left:20px;z-index:2;
+    background:var(--green);color:var(--white);
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;
+    padding:8px 14px;border-radius:2px;
+  }
+  .dest-row .txt{
+    padding:64px;display:flex;flex-direction:column;justify-content:center;
+    background:var(--white);
+  }
+  .dest-row.rev .media{order:2;}
+  .dest-row.rev .txt{order:1;}
+  .dest-row .txt h3{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:clamp(26px,2.6vw,38px);letter-spacing:-0.02em;line-height:1.1;
+    color:var(--green);margin:20px 0;
+  }
+  .dest-row .txt p{color:var(--ink-soft);max-width:480px;}
+  .dest-row .txt ul{list-style:none;margin-top:24px;}
+  .dest-row .txt li{
+    padding:10px 0;border-bottom:1px solid var(--hairline);
+    font-size:14px;color:var(--ink-soft);
+    display:flex;gap:12px;align-items:baseline;
+  }
+  .dest-row .txt li::before{content:"—";color:var(--sand);font-weight:700;}
+  .dest-row .txt .link{
+    margin-top:32px;
+    font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--green);
+    display:inline-flex;align-items:center;gap:10px;
+    border-bottom:1px solid var(--green);padding-bottom:6px;width:fit-content;
+    transition:color .2s,border-color .2s;
+  }
+  .dest-row .txt .link:hover{color:var(--sand);border-color:var(--sand);}
+  @media (max-width:900px){
+    .dest-row{grid-template-columns:1fr;min-height:0;}
+    .dest-row .media{min-height:300px;}
+    .dest-row.rev .media{order:0;}
+    .dest-row.rev .txt{order:1;}
+    .dest-row .txt{padding:40px 24px;}
+  }
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  }
+  .gallery-grid figure{
+    position:relative;overflow:hidden;border-radius:2px;
+    aspect-ratio:1/1;
+  }
+  .gallery-grid img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .7s cubic-bezier(.22,.61,.36,1);
+  }
+  .gallery-grid figure:hover img{transform:scale(1.06);}
+  .gallery-grid figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:32px 16px 14px;
+    background:linear-gradient(transparent,rgba(14,43,30,.85));
+    color:var(--white);
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;
+    opacity:0;transform:translateY(8px);
+    transition:opacity .4s,transform .4s;
+  }
+  .gallery-grid figure:hover figcaption{opacity:1;transform:none;}
+  @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  /* ---------- Testimonial ---------- */
+  .testimonial{text-align:center;}
+  .testimonial .rule{width:64px;height:1px;background:var(--sand);margin:0 auto 40px;}
+  .testimonial blockquote{
+    font-family:'Archivo',sans-serif;font-weight:600;
+    font-size:clamp(22px,2.8vw,34px);letter-spacing:-0.01em;line-height:1.35;
+    color:var(--green);max-width:880px;margin:0 auto;
+  }
+  .testimonial blockquote .mark{color:var(--sand);}
+  .testimonial .attr{margin-top:32px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);}
+  .testimonial .rule.bottom{margin:40px auto 0;}
+  /* ---------- CTA band ---------- */
+  .cta{background:var(--green);color:var(--white);}
+  .cta .wrap{
+    padding-top:96px;padding-bottom:96px;
+    display:grid;grid-template-columns:1.4fr .6fr;gap:64px;align-items:center;
+  }
+  .cta .micro{color:var(--sand);}
+  .cta h2{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:clamp(30px,3.6vw,52px);letter-spacing:-0.02em;line-height:1.05;
+    margin-top:20px;
+  }
+  .cta p{margin-top:20px;color:rgba(255,255,255,.75);max-width:520px;}
+  .cta .cta-side{display:flex;flex-direction:column;gap:20px;align-items:flex-start;}
+  .btn-sand{
+    background:var(--sand);color:var(--green);border:1px solid var(--sand);
+  }
+  .btn-sand:hover{background:transparent;color:var(--sand);}
+  .cta .phone{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;
+    color:var(--white);
+  }
+  .cta .phone small{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;}
+  @media (max-width:900px){
+    .cta .wrap{grid-template-columns:1fr;gap:40px;padding-top:64px;padding-bottom:64px;}
+  }
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--hairline);background:var(--white);}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;
+    padding:64px 0 48px;
+  }
+  .footer-grid .logo{height:40px;margin-bottom:20px;}
+  .footer-grid p{font-size:14px;color:var(--ink-soft);max-width:280px;}
+  .footer-grid h5{
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--olive);
+    margin-bottom:20px;
+  }
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:10px;}
+  .footer-grid li a{font-size:14px;color:var(--ink-soft);transition:color .2s;}
+  .footer-grid li a:hover{color:var(--green);}
+  .footer-bottom{
+    border-top:1px solid var(--hairline);
+    padding:20px 0;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    font-size:12px;color:var(--grey);letter-spacing:.06em;
+  }
+  .socials{display:flex;gap:12px;margin-top:4px;}
+  .socials a{
+    width:36px;height:36px;border:1px solid var(--hairline);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--green);transition:all .25s;
+  }
+  .socials a:hover{background:var(--green);color:var(--white);border-color:var(--green);}
+  .socials svg{width:16px;height:16px;fill:currentColor;}
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utility">
+  <div class="wrap">
+    <div>
+      <a href="tel:+264813555696">+264 81 355 5696</a>
+      <span class="sep">/</span>
+      <a href="mailto:travel@elephanteye.com.na">travel@elephanteye.com.na</a>
+    </div>
+    <div class="right">Windhoek, Namibia <span class="dot">●</span> 15+ years of expertise</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="wrap header-inner">
+    <a href="#top"><img src="assets/logo-card.png" alt="Elephant Eye Namibia" class="logo"></a>
+    <nav class="main" id="mainNav">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#destinations">Experiences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn-enquire">Enquire</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top" style="padding:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker reveal">
+          <span class="rule"></span>
+          <span class="micro">Elephant Eye Travel Info &amp; Adventure Tours — Est. Namibia</span>
+        </div>
+        <h1 class="hero-title reveal" id="heroTitle">
+          <span class="line"><span>Travel<br>Consultancy</span></span>
+          <span class="line"><span class="accent">Adventure<br>Tours</span></span>
+          <span class="line"><span class="sand">Sustainable<br>Tourism</span></span>
+        </h1>
+        <p class="hero-copy reveal">
+          Elephant Eye is a Namibian travel consultancy and adventure operator with over 15 years of expertise in curating immersive, environmentally responsible journeys across Namibia, Africa, and select global destinations.
+        </p>
+        <p class="hero-copy reveal" style="margin-top:16px;font-style:italic;font-size:15px;">
+          "Where nature becomes an experience. Where travel becomes responsibility."
+        </p>
+        <div class="hero-ctas reveal">
+          <a href="#contact" class="btn btn-primary">Plan Your Journey <span class="arrow">→</span></a>
+          <a href="#services" class="btn btn-ghost">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img src="assets/hero-deadvlei.jpg" alt="Deadvlei clay pan with dead camel-thorn trees against a red dune">
+        <div class="caption-chip">
+          Deadvlei, Namib-Naukluft
+          <small>Namibia — photographed on expedition</small>
+        </div>
+      </div>
+    </div>
+    <!-- Stats strip -->
+    <div class="stats reveal">
+      <div class="stat"><div class="value">15<em>+</em></div><div class="label">Years of expertise</div></div>
+      <div class="stat"><div class="value">6</div><div class="label">Specialist service areas</div></div>
+      <div class="stat"><div class="value">3</div><div class="label">Core regions served</div></div>
+      <div class="stat"><div class="value">100<em>%</em></div><div class="label">Responsible travel</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="micro"><span class="num">01</span>Services</div>
+        <h2 style="margin-top:16px;">Six areas of specialisation</h2>
+      </div>
+      <div class="micro" style="color:var(--grey);">Travellers · Lodges · Parks · Governments</div>
+    </div>
+    <div class="reveal">
+      <a href="#contact" class="service-row">
+        <span class="idx">01</span>
+        <h3>Premium Travel Agency &amp; Booking</h3>
+        <p>Tailor-made holiday packages, exclusive airfares, transfers &amp; car hire, visa assistance and full concierge support.</p>
+        <span class="go">→</span>
+      </a>
+      <a href="#contact" class="service-row">
+        <span class="idx">02</span>
+        <h3>Adventure Tours &amp; Safaris</h3>
+        <p>Guided tours, wildlife safaris, desert adventures, and photographic &amp; cultural experiences across the region.</p>
+        <span class="go">→</span>
+      </a>
+      <a href="#contact" class="service-row">
+        <span class="idx">03</span>
+        <h3>Conservation &amp; Park Management</h3>
+        <p>Park management planning, conservation strategies, co-management models and climate adaptation programmes.</p>
+        <span class="go">→</span>
+      </a>
+      <a href="#contact" class="service-row">
+        <span class="idx">04</span>
+        <h3>Sustainable &amp; Climate-Smart Agri-Tourism</h3>
+        <p>Eco-tourism development, community-based tourism and responsible travel programmes that endure.</p>
+        <span class="go">→</span>
+      </a>
+      <a href="#contact" class="service-row">
+        <span class="idx">05</span>
+        <h3>Hospitality Training &amp; Project Management</h3>
+        <p>Operations training, business planning, guide training, and sales &amp; marketing strategy for tourism ventures.</p>
+        <span class="go">→</span>
+      </a>
+      <a href="#contact" class="service-row">
+        <span class="idx">06</span>
+        <h3>Environmental Volunteering</h3>
+        <p>Habitat restoration, wildlife monitoring, reforestation and community education placements.</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Why us -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="micro reveal" style="margin-bottom:40px;"><span class="num">02</span>Why travellers choose us</div>
+    <div class="why-grid">
+      <div class="why-left reveal">
+        <div class="why-sticky">
+          <h2>Principles behind<br>every journey</h2>
+          <p>Every itinerary, partnership and project is measured against the same standard: travel that leaves places — and people — better than we found them.</p>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="why-item reveal">
+          <span class="n">01</span>
+          <div><h4>Sustainability &amp; conservation focus</h4><p>Environmental responsibility is built into every route, lodge and activity we recommend.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">02</span>
+          <div><h4>Transparent, ethical operations</h4><p>Clear pricing, honest advice and accountable partnerships — no hidden agendas.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">03</span>
+          <div><h4>Safety &amp; professional standards</h4><p>Strong safety protocols and professional guiding standards on every departure.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">04</span>
+          <div><h4>Commitment to communities &amp; culture</h4><p>Local communities and living cultures are partners in our journeys, not backdrops.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">05</span>
+          <div><h4>High-quality, detail-oriented service</h4><p>Fifteen years of operational detail, from border crossings to the last sundowner.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">06</span>
+          <div><h4>Respect for nature, wildlife &amp; heritage</h4><p>We travel as guests — of the land, its wildlife and the people who call it home.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="micro"><span class="num">03</span>How it works</div>
+        <h2 style="margin-top:16px;">From enquiry to expedition</h2>
+      </div>
+    </div>
+    <div class="steps reveal" style="margin-top:48px;">
+      <div class="step">
+        <div class="sq">01</div>
+        <h4>Consult</h4>
+        <p>Share your brief — dates, interests, budget. We listen first, then advise.</p>
+      </div>
+      <div class="step">
+        <div class="sq">02</div>
+        <h4>Design</h4>
+        <p>We build a tailor-made itinerary with transparent costing and responsible options.</p>
+      </div>
+      <div class="step">
+        <div class="sq">03</div>
+        <h4>Book</h4>
+        <p>Flights, lodges, transfers, permits and visas — confirmed and coordinated by us.</p>
+      </div>
+      <div class="step">
+        <div class="sq">04</div>
+        <h4>Travel</h4>
+        <p>Journey with expert guides and 24/7 on-the-ground support, start to finish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Destinations -->
+<section id="destinations" style="padding-top:0;padding-bottom:0;border-top:1px solid var(--hairline);">
+  <div class="wrap">
+    <div class="section-head reveal" style="border-bottom:none;">
+      <div>
+        <div class="micro"><span class="num">04</span>Signature experiences</div>
+        <h2 style="margin-top:16px;">Namibia, curated</h2>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--hairline);">
+    <!-- Row 1: image left -->
+    <div class="dest-row reveal">
+      <div class="media">
+        <span class="tag">Etosha</span>
+        <img src="assets/elephants.jpg" alt="White elephants of Etosha with springbok">
+      </div>
+      <div class="txt">
+        <span class="micro">Wildlife Safari</span>
+        <h3>The white elephants of Etosha</h3>
+        <p>Track dust-white elephants, lion prides and rare antelope across Etosha's vast salt pan — one of Africa's greatest wildlife theatres, guided by people who know every waterhole.</p>
+        <ul>
+          <li>Private guided game drives</li>
+          <li>Photographic hides &amp; waterhole sessions</li>
+          <li>Hand-picked lodges inside &amp; around the park</li>
+        </ul>
+        <a href="#contact" class="link">Enquire about this safari →</a>
+      </div>
+    </div>
+    <!-- Row 2: reversed -->
+    <div class="dest-row rev reveal">
+      <div class="media">
+        <span class="tag">Sossusvlei</span>
+        <img src="assets/dune-hikers.jpg" alt="Group hiking up a red dune ridge at Sossusvlei">
+      </div>
+      <div class="txt">
+        <span class="micro">Desert Adventure</span>
+        <h3>Dunes of the Namib</h3>
+        <p>Summit the towering red dunes of Sossusvlei at dawn and walk the ancient clay pans of Deadvlei — the oldest desert on earth, experienced on foot and in full colour.</p>
+        <ul>
+          <li>Sunrise dune ascents with expert guides</li>
+          <li>Deadvlei &amp; Sesriem Canyon expeditions</li>
+          <li>Desert ecology &amp; conservation interpretation</li>
+        </ul>
+        <a href="#contact" class="link">Enquire about this adventure →</a>
+      </div>
+    </div>
+    <!-- Row 3: image left -->
+    <div class="dest-row reveal">
+      <div class="media">
+        <span class="tag">Kunene</span>
+        <img src="assets/himba-dance.jpg" alt="Himba cultural dance under trees">
+      </div>
+      <div class="txt">
+        <span class="micro">Cultural Journey</span>
+        <h3>Living cultures of the north</h3>
+        <p>Meet the Himba and other communities of northern Namibia through respectful, community-led encounters that put local voices — and local benefit — first.</p>
+        <ul>
+          <li>Community-based tourism partnerships</li>
+          <li>Traditional craft, song &amp; ceremony</li>
+          <li>Revenue shared with host communities</li>
+        </ul>
+        <a href="#contact" class="link">Enquire about this journey →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="micro"><span class="num">05</span>Field notes</div>
+        <h2 style="margin-top:16px;">From the field</h2>
+      </div>
+      <a href="#contact" class="micro" style="color:var(--green);">@elephanteyenam →</a>
+    </div>
+    <div class="gallery-grid reveal" style="margin-top:48px;">
+      <figure>
+        <img src="assets/safari-vehicle.jpg" alt="Guide with safari 4x4 vehicle">
+        <figcaption>Expedition ready — guided 4x4 safaris</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/waterhole.jpg" alt="Zebras and giraffe at a waterhole">
+        <figcaption>Waterhole hour — Etosha National Park</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dune-tree.jpg" alt="Red dune seen through a camel-thorn tree">
+        <figcaption>Camel-thorn frame — Namib Desert</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/traveller-dune.jpg" alt="Traveller standing on a dune">
+        <figcaption>On the ridge — traveller's view</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial" style="background:var(--cream);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);">
+  <div class="wrap reveal">
+    <div class="rule"></div>
+    <div class="micro" style="margin-bottom:32px;"><span class="num">06</span>What travellers say</div>
+    <blockquote>
+      <span class="mark">"</span>Elephant Eye Travel delivered a seamless, authentic, and well-organised experience that exceeded our expectations. Their knowledge of Namibia, attention to detail, and commitment to responsible tourism truly set them apart.<span class="mark">"</span>
+    </blockquote>
+    <div class="attr">— International Traveller</div>
+    <div class="rule bottom"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="micro">Begin the conversation</div>
+      <h2>Your journey starts<br>with a consultation.</h2>
+      <p>Tell us where you want to go — or what you want to build. From tailor-made safaris to park management partnerships, our team responds within one business day.</p>
+    </div>
+    <div class="cta-side reveal">
+      <a href="mailto:travel@elephanteye.com.na" class="btn btn-sand">Send an Enquiry <span class="arrow">→</span></a>
+      <a class="phone" href="tel:+264813555696"><small>Call us directly</small>+264 81 355 5696</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo-card.png" alt="Elephant Eye Namibia" class="logo">
+        <p>Travel consultancy, adventure tours and sustainable tourism solutions — from Windhoek to the world.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/elephanteyenam" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
+          </a>
+          <a href="https://wa.me/264813555696" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 001.7 17.9L0 24l6.3-1.6A12 12 0 1012 0zm0 22a10 10 0 01-5.1-1.4l-.4-.2-3.7 1 1-3.6-.3-.4A10 10 0 1112 22zm5.5-7.5c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1a8.2 8.2 0 01-4-3.5c-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4a3.3 3.3 0 00-1 2.5c0 1.4 1.1 2.8 1.2 3 .1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Travel Agency &amp; Booking</a></li>
+          <li><a href="#services">Adventure Tours &amp; Safaris</a></li>
+          <li><a href="#services">Conservation &amp; Parks</a></li>
+          <li><a href="#services">Agri-Tourism</a></li>
+          <li><a href="#services">Hospitality Training</a></li>
+          <li><a href="#services">Volunteering</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+264813555696">+264 81 355 5696</a></li>
+          <li><a href="tel:+264852221448">+264 85 222 1448</a></li>
+          <li><a href="mailto:travel@elephanteye.com.na">travel@elephanteye.com.na</a></li>
+          <li><a href="#contact">SungatePark Erf 135,<br>Hosea Kutako Int'l Airport,<br>Windhoek, Namibia</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#why">Why choose us</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#destinations">Experiences</a></li>
+          <li><a href="#contact">Enquire</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Elephant Eye Travel Info &amp; Adventure Tours · Windhoek, Namibia</span>
+      <span>Travel Consultancy · Adventure Tours · Sustainable Tourism Solutions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero title animation (immediate)
+  requestAnimationFrame(() => {
+    document.getElementById('heroTitle').classList.add('in');
+  });
+</script>
+</body>
+</html>

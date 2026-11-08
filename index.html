@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elephant Eye — Homepage Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0E2B1E; --green-700:#1C4A34; --olive:#8A8B5C;
+    --sand:#D9A05B; --cream:#F7F4ED; --line:rgba(14,43,30,.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--green-900);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  header{padding:56px 6vw 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:20px}
+  .brand img{height:64px;width:auto}
+  .brand small{display:block;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:var(--olive);margin-top:6px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1}
+  .intro{padding:0 6vw 40px;max-width:760px;color:#3d4a41;font-size:15px;line-height:1.7}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:36px;padding:0 6vw 80px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;display:block;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -20px rgba(14,43,30,.35)}
+  .frame{position:relative;height:280px;overflow:hidden;background:#0E2B1E}
+  .frame iframe{width:1440px;height:1060px;border:0;transform:scale(.29);transform-origin:top left;pointer-events:none}
+  @media(min-width:1400px){.frame iframe{transform:scale(.34)} .frame{height:330px}}
+  .meta{padding:20px 24px 24px;border-top:1px solid var(--line)}
+  .meta .num{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);font-weight:600}
+  .meta h2{font-family:'Fraunces',serif;font-size:24px;margin:6px 0 8px}
+  .meta p{font-size:13.5px;line-height:1.6;color:#4c5a50}
+  .meta .open{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green-700);border-bottom:2px solid var(--olive);padding-bottom:2px}
+  footer{padding:32px 6vw;border-top:1px solid var(--line);font-size:12.5px;color:#6b776f;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/logo-card.png" alt="Elephant Eye — Namibia, All Seasons Destination">
+  </div>
+  <h1>Five homepage directions,<br><em style="font-style:italic;color:var(--olive)">one wild brand.</em></h1>
+</header>
+<p class="intro">
+  Design mockups for <strong>elephanteye.com.na</strong> — every concept uses the official logo palette
+  (deep forest green, olive, sand, cream) and real photography from the existing site.
+  Click any concept to explore it full-screen.
+</p>
+<div class="grid">
+  <a class="card" href="concept-1.html">
+    <div class="frame"><iframe src="concept-1.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="meta">
+      <div class="num">Concept 01</div>
+      <h2>Savanna Bold</h2>
+      <p>The high-energy safari landing page: full-bleed hero, big headline, check bullets, floating badge. Closest to the reference you shared — re-dressed in Elephant Eye green.</p>
+      <span class="open">View full screen →</span>
+    </div>
+  </a>
+  <a class="card" href="concept-2.html">
+    <div class="frame"><iframe src="concept-2.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="meta">
+      <div class="num">Concept 02</div>
+      <h2>Eco Editorial</h2>
+      <p>Luxury travel-magazine calm: cream paper, serif typography, arched photography, numbered editorial service rows. Quiet, premium, conservation-minded.</p>
+      <span class="open">View full screen →</span>
+    </div>
+  </a>
+  <a class="card" href="concept-3.html">
+    <div class="frame"><iframe src="concept-3.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="meta">
+      <div class="num">Concept 03</div>
+      <h2>Midnight Kalahari</h2>
+      <p>Dark and cinematic: night-desert greens, glassmorphic cards, glowing stats, immersive photo breaks. Built for drama and atmosphere.</p>
+      <span class="open">View full screen →</span>
+    </div>
+  </a>
+  <a class="card" href="concept-4.html">
+    <div class="frame"><iframe src="concept-4.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="meta">
+      <div class="num">Concept 04</div>
+      <h2>Terra Trails</h2>
+      <p>Warm and handcrafted: sand tones, rounded shapes, polaroid collages, sticker badges and wavy dividers. Friendly, approachable, full of personality.</p>
+      <span class="open">View full screen →</span>
+    </div>
+  </a>
+  <a class="card" href="concept-5.html">
+    <div class="frame"><iframe src="concept-5.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="meta">
+      <div class="num">Concept 05</div>
+      <h2>The Consultancy</h2>
+      <p>Swiss-grid corporate precision: hairlines, numbered sections, structured service rows. Speaks to travellers and B2B conservation clients alike.</p>
+      <span class="open">View full screen →</span>
+    </div>
+  </a>
+</div>
+<footer>
+  <span>Elephant Eye Travel Info &amp; Adventure Tours — Windhoek, Namibia</span>
+  <span>Mockups for review · pick a direction before the full build</span>
+</footer>
+</body>
+</html>
